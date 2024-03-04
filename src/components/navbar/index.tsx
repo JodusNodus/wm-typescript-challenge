@@ -1,4 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
+import { DarkModeSwitch } from "components/darkmode-switch";
 import { ROUTES } from "../../router";
 
 import { Logo } from "../logo";
@@ -78,6 +79,7 @@ export const Navbar = () => {
             </li>
           </ul>
         </div>
+        <DarkModeSwitch />
       </div>
     </nav>
   );
