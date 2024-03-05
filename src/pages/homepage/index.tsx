@@ -10,7 +10,9 @@ const Homepage = () => {
   );
   return (
     <main>
-      <h1 className="mb-3 text-3xl font-semibold">Most popular cocktails.</h1>
+      <h1 className="mb-5 text-3xl font-semibold dark:text-white">
+        Most popular cocktails.
+      </h1>
       {isLoading && (
         <div className="flex items-center justify-center">
           <Spinner />
