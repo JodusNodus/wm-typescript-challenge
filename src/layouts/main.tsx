@@ -10,7 +10,7 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
 
   return (
     <div
-      className="flex h-full flex-col bg-pampas dark:bg-gray-900"
+      className="flex min-h-full flex-col bg-pampas dark:bg-gray-900"
       data-testid="main"
     >
       <Navbar />

@@ -1,22 +1,33 @@
+import { GetPopularRecipesResponse, getPopularRecipes } from "api";
+import { Spinner } from "components";
 import { Card } from "components/card";
+import { useQuery } from "react-query";
 
-// TODO: REMOVE THIS CODE AND IMPLEMENT A NICE GRID!
 const Homepage = () => {
+  const { error, data, isLoading } = useQuery<GetPopularRecipesResponse, Error>(
+    "mostPopularRecipes",
+    getPopularRecipes
+  );
   return (
     <main>
-      <div className="mb-4 space-y-3 rounded border border-gray-200 bg-white/25 p-5 text-sm">
-        <p className="block text-radial">
-          👷🏻‍♂️ Please remove this block and show the{" "}
-          <strong>most popular recipes</strong> here.
-        </p>
-        <p className="block">
-          <span>You can use the api endpoint </span>
-          <code className="text-sm font-light">/api/recipes/popular</code>.
-        </p>
-      </div>
-      <div>
-        <Card />
-      </div>
+      <h1 className="mb-3 text-3xl font-semibold">Most popular cocktails.</h1>
+      {isLoading && (
+        <div className="flex items-center justify-center">
+          <Spinner />
+        </div>
+      )}
+      {error && (
+        <div>
+          <h2>Error: {error.toString()}</h2>
+        </div>
+      )}
+      {data && (
+        <div className="grid grid-flow-row auto-rows-max grid-cols-1 gap-2 md:grid-cols-3 ">
+          {data.cocktails.map((recipe) => (
+            <Card key={recipe.name} recipe={recipe} />
+          ))}
+        </div>
+      )}
     </main>
   );
 };
