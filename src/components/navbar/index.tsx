@@ -15,7 +15,7 @@ const navbarStyles = {
 export const Navbar = () => {
   const [isExpanded, setExpanded] = React.useState(false);
   return (
-    <nav className="px-2 py-6 sm:px-4 md:pt-12">
+    <nav className="px-2 py-6 sm:px-4 md:pt-12" role="navigation">
       <div className="container mx-auto flex flex-wrap items-center justify-between">
         <Link to="/" className="mr-6 flex flex-1">
           <Logo />
