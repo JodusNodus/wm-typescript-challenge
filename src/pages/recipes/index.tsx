@@ -28,28 +28,28 @@ const Recipes = () => {
       <h1 className="mb-5 text-3xl font-semibold dark:text-white">
         All cocktails.
       </h1>
-      {isLoading && (
+      {isLoading ? (
         <div className="flex items-center justify-center">
           <Spinner />
         </div>
-      )}
-      {error && (
+      ) : error ? (
         <div>
           <h2>Error: {error.toString()}</h2>
         </div>
-      )}
-      {data && (
-        <>
-          <div className="grid grid-flow-row auto-rows-max grid-cols-1 gap-2 md:grid-cols-3 lg:grid-cols-4">
-            {data.data.map((recipe) => (
-              <Card key={recipe.name} recipe={recipe} />
-            ))}
-          </div>
-          <PageControls
-            page={page}
-            total={Math.ceil(data.total / CARDS_PER_PAGE)}
-          />
-        </>
+      ) : (
+        data && (
+          <>
+            <div className="grid grid-flow-row auto-rows-max grid-cols-1 gap-2 md:grid-cols-3 lg:grid-cols-4">
+              {data.data.map((recipe) => (
+                <Card key={recipe.name} recipe={recipe} />
+              ))}
+            </div>
+            <PageControls
+              page={page}
+              total={Math.ceil(data.total / CARDS_PER_PAGE)}
+            />
+          </>
+        )
       )}
     </main>
   );

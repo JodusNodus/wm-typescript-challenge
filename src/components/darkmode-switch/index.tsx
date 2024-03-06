@@ -18,7 +18,7 @@ export const DarkModeSwitch = ({
       }}
     >
       <span className="md:sr-only">
-        Switch to {isDarkModeEnabled ? "dark" : "light"} mode.
+        Switch to {isDarkModeEnabled ? "light" : "dark"} mode.
       </span>
       <svg
         className="dark:hidden"

@@ -17,7 +17,7 @@ export const Navbar = () => {
   return (
     <nav className="px-2 py-6 sm:px-4 md:pt-12" role="navigation">
       <div className="container mx-auto flex flex-wrap items-center justify-between">
-        <Link to="/" className="mr-6 flex flex-1">
+        <Link to="/" className="mr-6 flex flex-1 pl-2 md:pl-0">
           <Logo />
           <span className="sr-only">Wieni</span>
         </Link>

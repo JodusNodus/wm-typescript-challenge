@@ -13,22 +13,22 @@ const Homepage = () => {
       <h1 className="mb-5 text-3xl font-semibold dark:text-white">
         Most popular cocktails.
       </h1>
-      {isLoading && (
+      {isLoading ? (
         <div className="flex items-center justify-center">
           <Spinner />
         </div>
-      )}
-      {error && (
+      ) : error ? (
         <div>
           <h2>Error: {error.toString()}</h2>
         </div>
-      )}
-      {data && (
-        <div className="grid grid-flow-row auto-rows-max grid-cols-1 gap-2 md:grid-cols-3 ">
-          {data.cocktails.map((recipe) => (
-            <Card key={recipe.name} recipe={recipe} />
-          ))}
-        </div>
+      ) : (
+        data && (
+          <div className="grid grid-flow-row auto-rows-max grid-cols-1 gap-2 md:grid-cols-3 ">
+            {data.cocktails.map((recipe) => (
+              <Card key={recipe.name} recipe={recipe} />
+            ))}
+          </div>
+        )
       )}
     </main>
   );
