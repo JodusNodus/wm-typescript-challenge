@@ -8,6 +8,22 @@ import { server } from "./mocks/server";
 beforeAll(() => {
   // Enable the mocking in tests.
   server.listen();
+
+  window.scrollTo = jest.fn();
+
+  Object.defineProperty(window, "matchMedia", {
+    writable: true,
+    value: (query: string) => ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addListener: () => {},
+      removeListener: () => {},
+      addEventListener: () => {},
+      removeEventListener: () => {},
+      dispatchEvent: () => {},
+    }),
+  });
 });
 
 afterEach(() => {
@@ -18,4 +34,5 @@ afterEach(() => {
 afterAll(() => {
   // Clean up once the tests are done.
   server.close();
+  jest.clearAllMocks();
 });

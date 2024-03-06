@@ -1,8 +1,9 @@
 import { render, screen } from "@testing-library/react";
+import { AppProvidersWrapper } from "context/wrapper";
 
 import Homepage from "./index";
 
-it("renders api message", () => {
-  render(<Homepage />);
-  expect(screen.getByText("/api/recipes/popular")).toBeInTheDocument();
+it("renders title", () => {
+  render(<Homepage />, { wrapper: AppProvidersWrapper });
+  expect(screen.getByText("Most popular cocktails.")).toBeInTheDocument();
 });

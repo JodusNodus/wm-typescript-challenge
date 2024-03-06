@@ -1,8 +1,9 @@
 import { render, screen } from "@testing-library/react";
+import { AppProvidersWrapper } from "context/wrapper";
 
-import Homepage from "./index";
+import Recipes from "./index";
 
-it("renders api message", () => {
-  render(<Homepage />);
-  expect(screen.getByText("/api/recipes/all")).toBeInTheDocument();
+it("renders title", () => {
+  render(<Recipes />, { wrapper: AppProvidersWrapper });
+  expect(screen.getByText("All cocktails.")).toBeInTheDocument();
 });
