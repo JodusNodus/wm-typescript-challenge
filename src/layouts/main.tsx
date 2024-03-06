@@ -13,9 +13,15 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
       className="flex min-h-full flex-col bg-pampas dark:bg-gray-900"
       data-testid="main"
     >
+      <a href="#content-container" className="sr-only">
+        Skip to main content
+      </a>
       <Navbar />
       <div className="flex flex-1 flex-col px-8 py-6 sm:px-4">
-        <div className="container mx-auto flex h-full flex-1 flex-col">
+        <div
+          id="content-container"
+          className="container mx-auto flex h-full flex-1 flex-col"
+        >
           {outlet ? <Outlet /> : children}
         </div>
       </div>
