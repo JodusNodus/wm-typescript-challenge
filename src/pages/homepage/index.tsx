@@ -19,7 +19,7 @@ const Homepage = () => {
         </div>
       ) : error ? (
         <div>
-          <h2>Error: {error.toString()}</h2>
+          <h2 className="text-xl font-semibold">Error: {error.toString()}</h2>
         </div>
       ) : (
         data && (

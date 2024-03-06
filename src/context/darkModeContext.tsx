@@ -25,7 +25,7 @@ export const DarkModeProvider = ({ children }: React.PropsWithChildren) => {
     mediaQuery.matches
   );
 
-  // Handle system perference changes
+  // Handle system preference changes
   React.useEffect(() => {
     const handler = (e: MediaQueryListEvent) =>
       setSystemPreferenceDark(e.matches);
