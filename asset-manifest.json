@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/wm-typescript-challenge/static/css/main.987b583d.css",
-    "main.js": "/wm-typescript-challenge/static/js/main.cada26cc.js",
+    "main.js": "/wm-typescript-challenge/static/js/main.cfa4ba4f.js",
     "static/js/293.36425ff3.chunk.js": "/wm-typescript-challenge/static/js/293.36425ff3.chunk.js",
     "static/js/214.01a74ee4.chunk.js": "/wm-typescript-challenge/static/js/214.01a74ee4.chunk.js",
     "static/js/392.994ce807.chunk.js": "/wm-typescript-challenge/static/js/392.994ce807.chunk.js",
@@ -9,7 +9,7 @@
     "static/js/509.0f6b0106.chunk.js": "/wm-typescript-challenge/static/js/509.0f6b0106.chunk.js",
     "index.html": "/wm-typescript-challenge/index.html",
     "main.987b583d.css.map": "/wm-typescript-challenge/static/css/main.987b583d.css.map",
-    "main.cada26cc.js.map": "/wm-typescript-challenge/static/js/main.cada26cc.js.map",
+    "main.cfa4ba4f.js.map": "/wm-typescript-challenge/static/js/main.cfa4ba4f.js.map",
     "293.36425ff3.chunk.js.map": "/wm-typescript-challenge/static/js/293.36425ff3.chunk.js.map",
     "214.01a74ee4.chunk.js.map": "/wm-typescript-challenge/static/js/214.01a74ee4.chunk.js.map",
     "392.994ce807.chunk.js.map": "/wm-typescript-challenge/static/js/392.994ce807.chunk.js.map",
@@ -18,6 +18,6 @@
   },
   "entrypoints": [
     "static/css/main.987b583d.css",
-    "static/js/main.cada26cc.js"
+    "static/js/main.cfa4ba4f.js"
   ]
 }
