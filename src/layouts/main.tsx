@@ -14,8 +14,8 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
       data-testid="main"
     >
       <Navbar />
-      <div className="flex-1 px-8 py-6 sm:px-4">
-        <div className="container mx-auto h-full">
+      <div className="flex flex-1 flex-col px-8 py-6 sm:px-4">
+        <div className="container mx-auto flex h-full flex-1 flex-col">
           {outlet ? <Outlet /> : children}
         </div>
       </div>
