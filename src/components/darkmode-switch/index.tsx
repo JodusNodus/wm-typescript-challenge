@@ -1,14 +1,25 @@
 import { useDarkMode } from "context/darkModeContext";
 
-/* eslint-disable jsx-a11y/label-has-associated-control */
-export const DarkModeSwitch = () => {
+export const DarkModeSwitch = ({
+  onClick,
+  className,
+}: {
+  className: string;
+  onClick: () => void;
+}) => {
   const { isDarkModeEnabled, setDarkMode } = useDarkMode();
   return (
     <button
-      className="ml-5 flex flex-col justify-center"
+      className={`flex justify-between ${className}`}
       type="button"
-      onClick={() => setDarkMode(!isDarkModeEnabled)}
+      onClick={() => {
+        onClick();
+        setDarkMode(!isDarkModeEnabled);
+      }}
     >
+      <span className="md:sr-only">
+        Switch to {isDarkModeEnabled ? "dark" : "light"} mode.
+      </span>
       <svg
         className="dark:hidden"
         width="24"
@@ -37,9 +48,6 @@ export const DarkModeSwitch = () => {
           strokeLinejoin="round"
         />
       </svg>
-      <span className="sr-only">
-        Switch to {isDarkModeEnabled ? "dark" : "light"} mode.
-      </span>
     </button>
   );
 };

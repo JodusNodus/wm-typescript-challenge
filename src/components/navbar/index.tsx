@@ -1,17 +1,19 @@
 import { Link, NavLink } from "react-router-dom";
 import { DarkModeSwitch } from "components/darkmode-switch";
+import React from "react";
 import { ROUTES } from "../../router";
 
 import { Logo } from "../logo";
 
 const navbarStyles = {
   default:
-    "block border-b border-gray-100 py-2 pr-4 pl-3 text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-gray-500 md:dark:hover:bg-transparent md:dark:hover:text-white",
+    "block border-b border-gray-700 py-2 pr-4 pl-3 text-gray-700 dark:border-gray-700 dark:text-gray-300 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-gray-500 md:dark:hover:bg-transparent md:dark:hover:text-white",
   active:
     "block rounded bg-blue-700 py-2 pr-4 pl-3 text-white dark:text-white md:bg-transparent md:p-0 md:text-gray-900 underline dark:md:text-white",
 };
 
 export const Navbar = () => {
+  const [isExpanded, setExpanded] = React.useState(false);
   return (
     <nav className="px-2 py-6 sm:px-4 md:pt-12">
       <div className="container mx-auto flex flex-wrap items-center justify-between">
@@ -25,7 +27,8 @@ export const Navbar = () => {
           type="button"
           className="ml-3 inline-flex items-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 md:hidden dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
           aria-controls="mobile-menu"
-          aria-expanded="false"
+          aria-expanded={isExpanded ? "true" : "false"}
+          onClick={() => setExpanded((x) => !x)}
         >
           <span className="sr-only">Open main menu</span>
           <svg
@@ -53,12 +56,16 @@ export const Navbar = () => {
             />
           </svg>
         </button>
-        <div className="hidden w-full md:block md:w-auto" id="mobile-menu">
+        <div
+          className={`w-full md:block md:w-auto ${!isExpanded ? "hidden" : ""}`}
+          id="mobile-menu"
+        >
           <ul className="mt-4 flex flex-col md:mt-0 md:flex-row md:space-x-8 md:text-sm md:font-medium">
             <li>
               <NavLink
                 data-testid="navbar-link--home"
                 to={ROUTES.HOME}
+                onClick={() => setExpanded(false)}
                 className={({ isActive }) =>
                   isActive ? navbarStyles.active : navbarStyles.default
                 }
@@ -70,6 +77,7 @@ export const Navbar = () => {
               <NavLink
                 data-testid="navbar-link--recipes"
                 to={ROUTES.RECIPES}
+                onClick={() => setExpanded(false)}
                 className={({ isActive }) =>
                   isActive ? navbarStyles.active : navbarStyles.default
                 }
@@ -77,9 +85,14 @@ export const Navbar = () => {
                 Recipes
               </NavLink>
             </li>
+            <li>
+              <DarkModeSwitch
+                className={`${navbarStyles.default} w-full`}
+                onClick={() => setExpanded(false)}
+              />
+            </li>
           </ul>
         </div>
-        <DarkModeSwitch />
       </div>
     </nav>
   );
