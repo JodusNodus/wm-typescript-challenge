@@ -15,11 +15,7 @@ const renderWithRouter = (ui, { route = "/" } = {}) => {
 };
 
 test("full app rendering/navigating", async () => {
-  const { user } = await renderWithRouter(
-    <Suspense fallback={null}>
-      <Router />
-    </Suspense>
-  );
+  const { user } = await renderWithRouter(<Router />);
 
   // Check if the homepage api text is visible
   expect(

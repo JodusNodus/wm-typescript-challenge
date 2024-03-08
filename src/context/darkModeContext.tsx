@@ -27,8 +27,9 @@ export const DarkModeProvider = ({ children }: React.PropsWithChildren) => {
 
   // Handle system preference changes
   React.useEffect(() => {
-    const handler = (e: MediaQueryListEvent) =>
+    const handler = (e: MediaQueryListEvent) => {
       setSystemPreferenceDark(e.matches);
+    };
     mediaQuery.addEventListener("change", handler);
     return () => mediaQuery.removeEventListener("change", handler);
   }, [mediaQuery]);
@@ -48,8 +49,11 @@ export const DarkModeProvider = ({ children }: React.PropsWithChildren) => {
   );
 
   return (
-    // eslint-disable-next-line tailwindcss/no-custom-classname
-    <div className={`h-full ${isDarkModeEnabled ? "dark" : "light"}`}>
+    <div
+      data-testid="darkmode-wrapper"
+      // eslint-disable-next-line tailwindcss/no-custom-classname
+      className={`h-full ${isDarkModeEnabled ? "dark" : "light"}`}
+    >
       <DarkModeContext.Provider value={contextValue}>
         {children}
       </DarkModeContext.Provider>

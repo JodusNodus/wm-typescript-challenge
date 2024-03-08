@@ -2,9 +2,9 @@ import { useDarkMode } from "context/darkModeContext";
 
 export const DarkModeSwitch = ({
   onClick,
-  className,
+  className = "",
 }: {
-  className: string;
+  className?: string;
   onClick: () => void;
 }) => {
   const { isDarkModeEnabled, setDarkMode } = useDarkMode();
@@ -12,6 +12,7 @@ export const DarkModeSwitch = ({
     <button
       className={`flex justify-between ${className}`}
       type="button"
+      data-testid="darkmode-switch"
       onClick={() => {
         onClick();
         setDarkMode(!isDarkModeEnabled);
