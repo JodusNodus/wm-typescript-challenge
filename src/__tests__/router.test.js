@@ -1,21 +1,10 @@
-import { Suspense } from "react";
-import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import { AppProvidersWrapper } from "context/wrapper";
+import { screen } from "@testing-library/react";
 
 import { Router } from "../router";
-
-const renderWithRouter = (ui, { route = "/" } = {}) => {
-  window.history.pushState({}, "Test page", route);
-
-  return {
-    user: userEvent.setup(),
-    ...render(ui, { wrapper: AppProvidersWrapper }),
-  };
-};
+import { renderWithRouter } from "../testUtils";
 
 test("full app rendering/navigating", async () => {
-  const { user } = await renderWithRouter(<Router />);
+  const { user } = renderWithRouter(<Router />);
 
   // Check if the homepage api text is visible
   expect(

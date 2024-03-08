@@ -54,7 +54,7 @@ it("renders theme and changes when an event comes in", async () => {
   const wrapper = screen.getByTestId("darkmode-wrapper");
   expect(wrapper).toHaveClass("light");
 
-  await act(() => {
+  act(() => {
     setMedia({
       "prefers-color-scheme": "dark",
     });

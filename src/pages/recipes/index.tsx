@@ -69,6 +69,7 @@ const PageControls = ({ page, total }: { page: number; total: number }) => {
           className={`${controlStyles} ${hidePrev ? "invisible" : ""}`}
           aria-disabled={hidePrev}
           to={`${ROUTES.RECIPES}/${page - 1}`}
+          data-testid="paginate-prev"
         >
           &larr; Previous
         </Link>
@@ -76,24 +77,29 @@ const PageControls = ({ page, total }: { page: number; total: number }) => {
           aria-disabled={hideNext}
           className={`${controlStyles} ${hideNext ? "invisible" : ""}`}
           to={`${ROUTES.RECIPES}/${page + 1}`}
+          data-testid="paginate-next"
         >
           Next &rarr;
         </Link>
       </div>
       <ol className="mt-3 flex sm:absolute sm:top-0 sm:mt-0">
-        {pages.map((x, i) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <li key={i}>
-            <Link
-              className={`${controlStyles} ${
-                i === page - 1 ? "font-semibold underline" : ""
-              }`}
-              to={`${ROUTES.RECIPES}/${i + 1}`}
-            >
-              {i + 1}
-            </Link>
-          </li>
-        ))}
+        {pages.map((x, i) => {
+          const p = i + 1;
+          return (
+            // eslint-disable-next-line react/no-array-index-key
+            <li key={i}>
+              <Link
+                className={`${controlStyles} ${
+                  p === page ? "font-semibold underline" : ""
+                }`}
+                data-testid={p === page ? "current-page-link" : undefined}
+                to={`${ROUTES.RECIPES}/${p}`}
+              >
+                {p}
+              </Link>
+            </li>
+          );
+        })}
       </ol>
     </div>
   );

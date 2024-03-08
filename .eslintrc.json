@@ -85,7 +85,8 @@
         "optionalDependencies": false
       }
     ],
-    "no-nested-ternary": "off"
+    "no-nested-ternary": "off",
+    "react/no-array-index-key": false
   },
   "settings": {
     "import/resolver": {

@@ -5,7 +5,10 @@ type Props = {
 };
 export const Card = ({ recipe }: Props) => {
   return (
-    <div className="flex rounded border border-gray-200 bg-white/50 p-4 dark:border-gray-500 dark:bg-gray-800 dark:text-gray-300">
+    <div
+      data-testid="cocktail-card"
+      className="flex rounded border border-gray-200 bg-white/50 p-4 dark:border-gray-500 dark:bg-gray-800 dark:text-gray-300"
+    >
       <div className="block space-y-2">
         <h2 className="text-2xl font-bold dark:text-white">{recipe.name}</h2>
         {recipe.category ? (
@@ -16,12 +19,12 @@ export const Card = ({ recipe }: Props) => {
 
         <h3 className="text-lg font-bold">Ingredients</h3>
         <ul className="list-inside list-disc px-1 text-sm">
-          {recipe.ingredients.map((ingredient) => {
+          {recipe.ingredients.map((ingredient, i) => {
             if (isSpecialIngredient(ingredient)) {
-              return <li key={ingredient.special}>{ingredient.special}</li>;
+              return <li key={i}>{ingredient.special}</li>;
             }
             return (
-              <li key={ingredient.ingredient}>
+              <li key={i}>
                 {ingredient.amount} {ingredient.unit} {ingredient.ingredient}
               </li>
             );
